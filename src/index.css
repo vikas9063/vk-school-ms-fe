@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+
+
+*{
+
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: 100 200 300 ; */
+  font-style: normal;
+}
+
+@theme {
+  /* Primary Blue */
+  --color-primary: oklch(0.624 0.2 259.5);     /* ~#2563EB */
+  
+  /* Accent Green */
+  --color-accent: oklch(0.74 0.167 147.2);     /* ~#10B981 */
+
+  /* Backgrounds */
+  --color-bg: oklch(0.985 0.005 270);          /* ~#F9FAFB */
+  --color-surface: oklch(1 0 0);               /* ~#FFFFFF */
+  
+  /* Text */
+  --color-text: oklch(0.17 0.01 260);          /* ~#111827 */
+  --color-muted: oklch(0.43 0.02 260); 
+}
