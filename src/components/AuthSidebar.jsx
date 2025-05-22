@@ -91,7 +91,7 @@ export default function AuthSidebar() {
   const location = useLocation();
 
   return (
-    <div>
+    <div className="bg-transparent">
       <div className="logo py-5 flex items-center gap-2 justify-center">
           <SiHtmlacademy size={25} className="text-white"/> <p className="text-2xl font-bold text-violet-50">School Arc</p>
       </div>
