@@ -1,3 +1,6 @@
+import { Link, useLocation } from "react-router";
+import React from "react";
+import { SiHtmlacademy } from "react-icons/si";
 import {
   Sidebar,
   SidebarItem,
@@ -15,10 +18,6 @@ import {
   HiUser,
   HiCog,
 } from "react-icons/hi";
-
-import { Link, useLocation } from "react-router";
-import React from "react";
-import { SiHtmlacademy } from "react-icons/si";
 
 // Icon lookup table
 const icons = {
@@ -110,7 +109,7 @@ export default function AuthSidebar() {
                     icon={Icon}
                     as={Link}
                     to={item.href}
-                    className={`text-sm  ${isActive ? "bg-surface text-violet-700 hover:text-white" : ""}`}
+                    className={`transition-colors duration-200 ${isActive ? "bg-violet-600" : "hover:bg-violet-600/50"}`}
                   >
                     {item.label}
                   </SidebarItem>
@@ -142,8 +141,7 @@ export default function AuthSidebar() {
                           key={child.label}
                           as={Link}
                           to={fullPath}
-                          className={`text-sm text-white ${isActive ? "bg-surface text-violet-700 hover:text-white" : ""}`}
-
+                          className={`transition-colors duration-200 ${isActive ? "bg-violet-600" : "hover:bg-violet-600/50"}`}
                         >
                           {child.label}
                         </SidebarItem>

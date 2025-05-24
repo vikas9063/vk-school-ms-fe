@@ -7,26 +7,25 @@ const HeadingComponent = ({ heading = "Heading", btnText, btnLink }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="my-5 flex items-center justify-between">
+    <div className=" flex items-center justify-between">
       <div className="flex gap-2 items-center">
         <Button
           size="xs"
           pill
-          outline
           color="purple"
-          onClick={() => navigate(-1)} 
-          className='cursor-pointer'
+          onClick={() => navigate(-1)}
+          className='hover:bg-violet-700'
         >
           <HiOutlineArrowLeft className="h-4 w-4" />
         </Button>
-        <p className="text-violet-800 font-bold text-lg border-b">
-          {heading} :
-        </p>
+        <h2 className="text-violet-800 font-bold text-lg border-b border-violet-300">
+          {heading}
+        </h2>
       </div>
 
       {btnText && btnLink && (
         <Link to={btnLink}>
-          <Button size="sm" color="purple" className="cursor-pointer">
+          <Button size="sm" color="purple" className="hover:bg-violet-700">
             {btnText}
           </Button>
         </Link>

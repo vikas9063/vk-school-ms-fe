@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import AuthSidebar from './AuthSidebar'
 import { Outlet } from 'react-router'
 import { RiMenuLine } from 'react-icons/ri'
-import { Drawer, DrawerHeader, DrawerItems } from 'flowbite-react'
+import { Drawer } from 'flowbite-react'
 
 const AuthLayout = () => {
-
     const [isOpen, setIsOpen] = useState(false);
-
     const handleClose = () => setIsOpen(false);
 
     return (
@@ -16,22 +14,19 @@ const AuthLayout = () => {
                 <AuthSidebar />
             </div>
             <div className="right w-full lg:ml-[300px]">
-                <div className="navb h-16 w-full flex items-center justify-between px-[3%] bg-violet-100 ">
-                    <div className='lg:hidden text-violet-800'>
+                <div className="navb h-16 w-full flex items-center justify-between px-[3%] bg-violet-100">
+                    <div className='lg:hidden text-violet-800 cursor-pointer'>
                         <RiMenuLine size={25} onClick={() => setIsOpen(true)} />
                     </div>
                 </div>
-                <main className='m-3'>
+                <main className=''>
                     <Outlet />
                 </main>
-                <div className='bg-violet-700'>
-                    <Drawer open={isOpen} onClose={handleClose} className='bg-violet-700 text-white'>
-                        <DrawerHeader title="School Arc" />
-                        <DrawerItems className=''>
-                            <AuthSidebar />
-                        </DrawerItems>
-                    </Drawer>
-                </div>
+                <Drawer open={isOpen} onClose={handleClose}>
+                    <div className='h-full bg-violet-700'>
+                        <AuthSidebar />
+                    </div>
+                </Drawer>
             </div>
         </section>
     )

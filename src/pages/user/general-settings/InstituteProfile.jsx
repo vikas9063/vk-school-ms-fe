@@ -5,12 +5,13 @@ import HeadingBar from "../../../components/HeadingBar";
 import { Badge, Card, Spinner } from "flowbite-react";
 import HeadingComponent from "../../../components/HeadingComponent";
 import { useNavigate } from "react-router";
+import SearchSortBar from "../../../components/SearchSortBar";
 
 // SchoolCard component
 function SchoolCard({ data }) {
   if (!data) return null;
   const navigate = useNavigate();
-  const handleCardClick = (schoolId)=>{
+  const handleCardClick = (schoolId) => {
     navigate(`/auth/general-settings/view-institute-details/${schoolId}`);
   }
 
@@ -110,20 +111,48 @@ const InstituteProfile = () => {
 
   useEffect(() => {
     getSchools();
-  }, [urlConfig.pageNo]);
+  }, [urlConfig]);
 
   const handlePageChange = (newPage) => {
     setUrlConfig((prev) => ({ ...prev, pageNo: newPage }));
   };
 
+  const sortOptions = [
+    { label: "School Name", value: "schoolName" },
+    { label: "School Code", value: "schoolCode" },
+    { label: "Phone No", value: "phoneNo" },
+    { label: "Email Id", value: "emailId" },
+    { label: 'Created On', value: "createdOn" }
+  ];
+
+  const handleSearch = (query) => {
+    // Update state or refetch API
+      console.log("Query : ",query);
+      
+  };
+
+const handleSortChange = ({ field, direction }) => {
+  setUrlConfig((prev) => ({
+    ...prev,
+    sortBy: field,
+    sortDir: direction,
+  }));
+};
+
+
   return (
-    <div className="px-4">
+    <div className="p-4 w-full bg-white">
       <HeadingBar />
       <HeadingComponent heading={"Institute Details"} btnText={"Add Institute"} btnLink="/auth/general-settings/add-institute-details" />
+      <SearchSortBar
+        onSearch={handleSearch}
+        onSortChange={handleSortChange}
+        sortOptions={sortOptions}
+      />
       <div className="min-h-[60vh]">
         {loading ? (
           <div className="flex justify-center items-center h-full">
-            <Spinner size="xl" color="purple"/>
+            <Spinner size="xl" color="purple" />
           </div>
         ) : schools.length === 0 ? (
           <p className="text-center text-gray-600">No schools available.</p>

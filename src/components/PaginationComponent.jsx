@@ -3,14 +3,11 @@ import { Button } from "flowbite-react";
 const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
   const renderPageNumbers = () => {
     const pages = [];
-
-    const pageLimit = 5;
     const sidePages = 1;
 
     const startEllipsis = currentPage > sidePages + 2;
     const endEllipsis = currentPage < totalPages - (sidePages + 3);
 
-    // Always show first page
     pages.push(
       <PageButton key={1} page={0} currentPage={currentPage} onPageChange={onPageChange} />
     );
@@ -42,8 +39,8 @@ const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div className="flex items-center justify-center flex-wrap gap-2 mt-4">
-      <Button className="cursor-pointer"
+    <div className="flex items-center justify-center gap-2 my-4">
+      <Button
         disabled={currentPage === 0}
         onClick={() => onPageChange(currentPage - 1)}
         size="xs"
@@ -55,7 +52,7 @@ const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
 
       {renderPageNumbers()}
 
-      <Button className="cursor-pointer"
+      <Button
         disabled={currentPage === totalPages - 1}
         onClick={() => onPageChange(currentPage + 1)}
         size="xs"
@@ -71,11 +68,10 @@ const PaginationComponent = ({ currentPage, totalPages, onPageChange }) => {
 const PageButton = ({ page, currentPage, onPageChange }) => {
   const isActive = page === currentPage;
   return (
-    <Button className="cursor-pointer"
+    <Button
       size="xs"
       onClick={() => onPageChange(page)}
       color={isActive ? "purple" : "white"}
-      
     >
       {page + 1}
     </Button>
