@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Create a base Axios instance
 const AxiosUtil = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8081/api/v1',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:9090/api/v1',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
